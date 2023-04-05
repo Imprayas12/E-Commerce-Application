@@ -1,6 +1,5 @@
 if(process.env.NODE_ENV != "production") {
     const dotnev = require('dotenv').config({ path : "./config.env"})
-  
 } 
 const express = require("express");
 const path = require("path")
@@ -41,6 +40,7 @@ const flashSession = {
         expires: Date.now() + 7 * 24 * 60 * 60 * 1000
     }
 }
+
 app.use(session(flashSession));
 app.use(flash());
 app.use((req, res, next) => {
@@ -49,9 +49,7 @@ app.use((req, res, next) => {
     next();
 })
 app.use(passport.authenticate('session'))
-app.use((req,res,next) => {
-    res.locals.message = req.flash.success
-})
+
 // Middlewares
 
 app.use(methodOverride('_method'));
@@ -72,6 +70,7 @@ app.get("/", (req,res)=>{
 app.use(productRouter);  // using router
 app.use(reviewRouter);
 app.use(authRouter)
+
 app.listen(PORT, () => {
     console.log(`server running at port ${PORT}`)
 })

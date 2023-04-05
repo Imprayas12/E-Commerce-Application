@@ -6,8 +6,7 @@ const {isLoggedIn} = require('../middleware');
 // get all products
 router.get("/products", async (req, res) => {
     const products = await Product.find({});
-    const message = req.flash('Success')
-    res.render("./products/product", { products , message})
+    res.render("./products/product", {products})
 })
 // get forms to create a new product
 router.get("/products/new", async (req, res) => {
@@ -25,8 +24,7 @@ router.post("/products", async (req, res) => {
 router.get("/products/:productid",isLoggedIn, async (req, res) => {
     const { productid } = req.params;
     const product = await Product.findById(productid).populate("review");
-    const updateMessage = req.flash('Successfully_added');
-    res.render("./products/show", { product , updateMessage});
+    res.render("./products/show", {product});
 })
 // get the edit form
 router.get("/products/:productid/edit", async (req, res) => {
