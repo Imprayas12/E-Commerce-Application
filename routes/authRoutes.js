@@ -1,7 +1,7 @@
 const express = require('express');
 const passport = require('passport');
 const router = express.Router();
-const User = require('../Models/user');
+const User = require('../models/user');
 router.get('/register',(req, res) => {
     res.render('auth/signup')
 })

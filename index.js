@@ -69,7 +69,7 @@ app.get("/", (req,res)=>{
 // Routers
 app.use(productRouter);  // using router
 app.use(reviewRouter);
-app.use(authRouter)
+app.use(authRouter);
 
 app.listen(PORT, () => {
     console.log(`server running at port ${PORT}`)
